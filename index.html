@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.rtl.min.css" integrity="sha384-dc2NSrAXbAkjrdm9IYrX10fQq9SDG6Vjz7nQVKdKcJl3pC+k37e7qJR5MVSCS+wR" crossorigin="anonymous">
+
+    <title>Markup Previewer</title>
+    <script src="/JS/marked.js"></script>
+
+    <script>
+ console.log(marked.parse(" # usefulProgrammer.org"));
+
+ function updatePreview(){
+     document.getElementById("preview").innerHTML = marked.parse(document.getElementById("editor").value)
+ }
+
+ function setDefault(){
+     let defaultText = `\
+# Useful Programmer
+## a markdown Previewer
+[learn more about UsefulProgrammer.org](http://www.usefulProgrammer.org)
+
+<dl>
+<dt>Definition list</dt>
+<dd>Is something people sometimes.</dd>
+
+<dt>Markdown in HTML</dt>
+<dd>Does *not* work *very* well. Use HTML <em>tags</em></dd>
+</dl>
+
+\`This is an example of inline code\`
+
+\`\`\`
+function exampleOf() {
+    return multiLineCodeBlock;
+}
+\`\`\`
+
+- This
+- is
+- an
+- example
+- of 
+- list
+- items
+
+>This is an example of block quote
+
+![Useful Programmer](https://football-italia.net/wp-content/uploads/2022/01/h_57263063-768x499.jpg)
+
+**This is an example of Bolded text**`;
+     let editorField = document.getElementById("editor");
+     let previewElement = document.getElementById("preview");
+     editorField.value = defaultText;
+     previewElement.innerHTML = marked.parse(defaultText);
+ }
+    </script>
+</head>
+<body onload="setDefault()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center text-white bg-success my-1">
+    <h1>Markdown Previewer by Useful Programmer</h1>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-6 bg-primary d-flex flex-column">
+<h2 class="text-white text-center my-3">Editor</h2>
+<div class="form-group flex-grow-1 d-flex flex-column">
+<textarea id="editor" onkeyup="updatePreview()" class="form-control flex-grow-1"></textarea>
+</div>
+        </div>
+        <div class="col-6 bg-danger">
+<h2 class="text-white text-center my-3">Preview</h2>
+<div id="preview"></div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
